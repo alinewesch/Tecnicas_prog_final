@@ -4,13 +4,8 @@ Durante a formação alunos de medicina não aprendem como realizar consultas a 
 
 O cadastro e banco de dados se faz necessário para integrar aluno e professor ao sistema de telemedicina que está sendo desenvolvido.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
-
-![](../header.png)
+![](https://github.com/alinewesch/Tecnicas_prog_final/issues/4#issue-642207523)
 
 ## Instalação
 
