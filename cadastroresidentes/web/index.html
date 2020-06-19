@@ -1,0 +1,146 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Cadastro Residentes</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div class="container">
+			<h1>Cadastro Residentes</h1>
+			<hr>
+			<div>
+
+				<input label='id' type='hidden'/>
+				
+				<form>
+					<div>
+					<div>	
+				       <label for="nome">Nome Completo:</label>
+				       <input class='from-control' type='text' label='nome' placeholder='Digite o nome' />
+					</div>
+					
+					<div>
+				        <label for="matricula">Matrícula:</label>
+				        <input class='from-control' type='numbers' label='matricula' placeholder='0000000' pattern="[0-9]+$" />
+				    </div>
+
+					
+					 <label for="nivel"> Nivel</label>
+					<select name="nivel" id="nivel">
+						<option value="" >Selecione nivel</option> 
+					  	<option value="R1">R1</option>
+					  	<option value="R2">R2</option>
+					  	<option value="R3">R3</option>
+					 </select>
+
+					 <div>
+					<label for="orientador"> Orientador</label>
+					<select name="orientador" id="orientador">
+						<option value="">Selecione orientador</option>
+					 	<option value="Solange Fagundes">Solange Fagundes</option>
+					  	<option value="Astor Gil">Astor Gil</option>
+					 	<option value="Manuela Santos">Manuela Santos</option>
+					 	</select>
+					 </div>
+
+					</div>
+									 		
+
+					<button class='btn btn-primary' incluir>Salvar</button>
+			</form>
+			
+
+			<table class="table" id='cadastro'>
+				<thead>
+					<tr>
+						<th>Residente</th>
+						<th>Matrícula</th>
+						<th>Nível</th>
+						<th>Orientador</th>
+					</tr>
+				</thead>
+				<tbody id="ProgramaResidente"></tbody>
+			</table>
+		</div>
+
+
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+
+		<script>
+			const APP = 'http://localhost:2424'
+
+			
+			const createButton = (label, type) => {
+				return $('<button>').addClass(`btn btn-${type}`).html(label)
+			}
+
+			const formataLinhas = usuarios => {
+				const linhas = usuarios.map(usuario => {
+					const updateButton = createButton('Editar', 'warning')
+					updateButton.click(() => atualizaCadastro(usuario))
+					const removeButtoon = createButton('Excluir', 'danger')
+					removeButtoon.click(() => removeCadastro(usuario))
+					return $('<tr>')
+						.append($('<td>').append(usuario.nome))
+						.append($('<td>').append(usuario.matricula))
+						.append($('<td>').append(usuario.nivel))
+						.append($('<td>').append(usuario.orientador))
+						.append($('<td>').append(updateButton).append(removeButtoon))
+				})
+				$('#ProgramaResidente').html(linhas)
+			}
+
+			const atualizaCadastro = usuario => {
+				$('[label=id]').val(usuario._id)
+				$('[label=nome]').val(usuario.nome)
+				$('#matricula').val(usuario.matricula)
+				$('#nivel').val(usuario.nive)
+				$('#orientador').val(usuario.orientador)
+			}
+
+			const removeCadastro = usuario => {
+				$.ajax({
+					method: 'DELETE',
+					url: `${APP}/cadastro/${usuario._id}`,
+					success: getCadastro
+				})
+			}
+
+
+			const getCadastro = () => {
+				$.ajax({
+					url: `${APP}/cadastro`,
+					success: cadastro => {
+						console.log(cadastro)
+					formataLinhas(cadastro)
+					$('[label]').val('')
+					}
+				})
+			}
+
+
+			const salvaCadastro = () => {
+				const _id = $('[label=id]').val()
+				const nome = $('[label=nome]').val()
+				const matricula = $('[label=matricula]').val()
+				const nivel = $('#nivel').val()
+				const orientador = $('#orientador').val()
+				$.ajax({
+					method: _id ? 'PUT' : 'POST',
+					url: `${APP}/cadastro/${_id}`,
+					data: _id ? {_id, nome, matricula, nivel, orientador } : { nome, matricula, nivel, orientador },
+					success: getCadastro
+				})
+			}
+
+			$(() => {
+				getCadastro()
+				$('[incluir]').click(salvaCadastro)
+			})
+
+
+		</script>
+
+
+	</body>
+</html>
