@@ -4,8 +4,9 @@ Durante a formação alunos de medicina não aprendem como realizar consultas a 
 
 O cadastro e banco de dados se faz necessário para integrar aluno e professor ao sistema de telemedicina que está sendo desenvolvido.
 
+## Container:
+![container](https://user-images.githubusercontent.com/65667824/85177998-beb84b00-b253-11ea-8be7-e00e07de82f5.png)
 
-![https://github.com/alinewesch/Tecnicas_prog_final/issues/4#issue-642207523]
 
 ## Como instalar:
 1. Faça o download dos os arquivos deste projeto e insira em um diretório de interesse;
@@ -18,9 +19,6 @@ para instalar todos as ferramentas necessárias.
 3. Abra o navegador e digite: localhost:8080
 
 
-## Meta
-
-Aline Weschenfelder 
 
 # Tecnicas_prog_final
 "name": "trabalhofinal",
