@@ -6,7 +6,7 @@ O cadastro e banco de dados se faz necessário para integrar aluno e professor a
 
 ## Container:
 ![container](https://user-images.githubusercontent.com/65667824/85177998-beb84b00-b253-11ea-8be7-e00e07de82f5.png)
-![8080](https://user-images.githubusercontent.com/65667824/85177961-a2b4a980-b253-11ea-995a-31740187147f.png)
+![compose](https://user-images.githubusercontent.com/65667824/85177942-93356080-b253-11ea-8906-670dcf7bff20.png)
 
 
 ## Como instalar:
@@ -18,7 +18,7 @@ docker-compose up
 para instalar todos as ferramentas necessárias.
 
 3. Abra o navegador e digite: localhost:8080
-
+![8080](https://user-images.githubusercontent.com/65667824/85177961-a2b4a980-b253-11ea-995a-31740187147f.png)
 
 
 # Tecnicas_prog_final
